@@ -49,6 +49,11 @@ public class UserService {
                         ))
                 .collect(Collectors.toList());
     }
+
+    public UserDTO.Read readById(Long userId) {
+        User user = userRepo.findById(userId).orElseThrow();
+        return UserDTO.Read.toDTO(user,user.getUserLoanHistories().stream().map(UserDTO.LoanRead::toDTO).collect(Collectors.toList()));
+    }
     @Transactional
     public String returnBook(UserDTO.Loan dto) {
         Book book = bookRepo.findById(dto.getBookId()).orElseThrow();

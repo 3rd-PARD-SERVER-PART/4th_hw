@@ -1,5 +1,6 @@
 package org.example.forthseminar.user.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.example.forthseminar.user.dto.UserDTO;
 import org.example.forthseminar.user.service.UserService;
@@ -33,6 +34,11 @@ public class UserController {
     @PostMapping("/return")
     public String returnBook(@RequestBody UserDTO.Loan dto) {
         return userService.returnBook(dto);
+    }
+
+    @GetMapping("/user/{userId}")
+    public UserDTO.Read readById(@PathVariable Long userId) {
+        return userService.readById(userId);
     }
 
 }

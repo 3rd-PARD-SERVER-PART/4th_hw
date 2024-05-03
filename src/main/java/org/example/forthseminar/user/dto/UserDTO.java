@@ -3,8 +3,6 @@ package org.example.forthseminar.user.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.forthseminar.book.dto.BookDTO;
-import org.example.forthseminar.book.entity.Book;
 import org.example.forthseminar.user.entity.User;
 import org.example.forthseminar.user.entity.UserLoanHistory;
 
@@ -38,12 +36,12 @@ public class UserDTO {
     public static class LoanRead{
         private String userName;
         private String bookName;
-        private boolean isLoan;
+        private boolean isReturn;
         public static UserDTO.LoanRead toDTO(UserLoanHistory entity) {
             return LoanRead.builder()
                     .userName(entity.getUser().getName())
                     .bookName(entity.getBook().getName())
-                    .isLoan(entity.getBook().isLoan())
+                    .isReturn(entity.isReturn())
                     .build();
         }
     }
