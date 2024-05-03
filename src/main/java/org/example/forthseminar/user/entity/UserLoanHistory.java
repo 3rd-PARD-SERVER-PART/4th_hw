@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.forthseminar.book.entity.Book;
+import org.example.forthseminar.user.dto.UserDTO;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
@@ -29,4 +30,10 @@ public class UserLoanHistory {
     @ColumnDefault("0")
     private boolean isReturn;
 
+    public static UserLoanHistory toEntity(User user, Book book) {
+        return UserLoanHistory.builder()
+                .user(user)
+                .book(book)
+                .build();
+    }
 }

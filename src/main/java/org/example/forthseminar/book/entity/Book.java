@@ -2,6 +2,7 @@ package org.example.forthseminar.book.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.forthseminar.book.dto.BookDTO;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
@@ -18,5 +19,11 @@ public class Book {
 
     @ColumnDefault("0")
     private boolean isLoan;
+
+    public static Book toEntity(BookDTO.Create dto) {
+        return Book.builder()
+                .name(dto.getName())
+                .build();
+    }
 
 }
