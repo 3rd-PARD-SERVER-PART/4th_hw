@@ -36,4 +36,7 @@ public class UserLoanHistory {
                 .book(book)
                 .build();
     }
+    public void isLoan() {
+        this.isReturn = !this.isReturn;
+    }
 }

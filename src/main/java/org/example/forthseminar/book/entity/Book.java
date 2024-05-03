@@ -26,4 +26,8 @@ public class Book {
                 .build();
     }
 
+    public void isReturn() {
+        this.isLoan = !this.isLoan;
+    }
+
 }

@@ -6,6 +6,9 @@ import org.example.forthseminar.book.entity.Book;
 import org.example.forthseminar.book.repo.BookRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class BookService {
@@ -13,5 +16,11 @@ public class BookService {
 
     public void createBook(BookDTO.Create dto) {
         bookRepo.save(Book.toEntity(dto));
+    }
+
+    public List<BookDTO.Read> readAll() {
+        return bookRepo.findAll().stream()
+                .map(BookDTO.Read::new)
+                .collect(Collectors.toList());
     }
 }
